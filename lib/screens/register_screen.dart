@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:quotes/controllers/register_controller.dart';
-import 'package:quotes/screens/login_screen.dart';
-
-
 
 class RegisterScreen extends StatelessWidget {
-   const RegisterScreen({super.key});
-
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final RegisterController registerController = Get.put(RegisterController());
+
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding:  const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Obx(
             () => Form(
               key: registerController.formKey,
@@ -142,30 +139,6 @@ class RegisterScreen extends StatelessWidget {
                     onChanged: (value) => registerController.confirmPassword.value = value,
                   ),
                   const SizedBox(height: 15.0),
-                  TextFormField(
-                    controller: registerController.phoneNumberController,
-                    decoration: InputDecoration(
-                      labelText: 'Phone Number',
-                      hintText: 'Enter your phone number',
-                      hintStyle: const TextStyle(color: Colors.black26),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    keyboardType: TextInputType.phone,
-                    validator: (value) {
-                      if (value == null || value.isEmpty || value.length != 11) {
-                        return 'Phone number should be exactly 11 digits';
-                      }
-                      return null;
-                    },
-                    onChanged: (value) => registerController.phoneNumber.value = value,
-                  ),
-                  const SizedBox(height: 15.0),
                   Row(
                     children: [
                       Checkbox(
@@ -206,7 +179,6 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 25.0),
-                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -237,11 +209,11 @@ class RegisterScreen extends StatelessWidget {
                     height: 45,
                     child: ElevatedButton(
                       onPressed: () {},
-                      child:  Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                           SvgPicture.asset('assets/images/icon-google.svg'),                      
+                          SvgPicture.asset('assets/images/icon-google.svg'),
                           const SizedBox(width: 15.0),
                           const Text(
                             'Google',
@@ -252,7 +224,6 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20.0),
-                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -262,7 +233,7 @@ class RegisterScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.to(() => const LoginScreen());
+                          Get.toNamed('/login');
                         },
                         child: const Text(
                           'Login',

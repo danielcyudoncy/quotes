@@ -12,8 +12,8 @@ class AppRoutes {
     GetPage(name: '/splash', page: () => const SplashScreen()),
     GetPage(name: '/onboarding', page: () => OnboardingScreen()),
     GetPage(name: '/login', page: () => const LoginScreen()),
-    GetPage(name: '/register', page: () => RegisterScreen()),
+    GetPage(name: '/register', page: () => const RegisterScreen()),
     GetPage(name: '/home', page: () => HomeScreen()), 
-    GetPage(name: '/profile', page: () => ProfileScreen()),
+    GetPage(name: '/profile', page: () => const ProfileScreen()),
   ];
 }

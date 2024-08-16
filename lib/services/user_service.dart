@@ -1,11 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserService {
-  Future<void> saveUserData(String uid, String fullName, String phoneNumber) async {
-    await FirebaseFirestore.instance.collection('users').doc(uid).set({
-      'fullName': fullName,
-      'phoneNumber': phoneNumber,
-      // Add more fields as needed
-    });
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<void> saveUserData({required String fullName, required String email}) async {
+    try {
+      await _firestore.collection('users').doc(email).set({
+        'fullName': fullName,
+        'email': email,
+      });
+    } catch (e) {
+      throw Exception('Error saving user data: $e');
+    }
   }
 }
